@@ -1,0 +1,34 @@
+* Config.org: A configuration file for Emacs.
+** [TODO] Introduction.
+I do like to fiddle around with Emacs. But the infinitely extensible
+editor invites the process of fiddling around.
+
+** [TODO] Suggested Structure for config.org.
+*** Set up the MELPA Repository.
+
+**** [TODO] Information about packages, including installing and updating.
+
+#+begin_src emacs-lisp
+  (require 'package)
+  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (package-initialize)
+#+end_src
+
+#+begin_src emacs-lisp
+  (require 'use-package)
+#+end_src
+
+
+*** Look and Feel Customisation.
+**** Look and Feel 'Built In' Customisation.
+**** Look and Feel 'Installed' Customisation.
+*** Programming Customisation.
+**** C/C++.
+**** Python.
+**** Clojure.
+*** Text Editing.
+**** HTML
+**** LaTeX
+**** Spell Checking
+**** Grammar/Lint Checking

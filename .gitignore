@@ -9,3 +9,9 @@
 
 # Undo-tree save-files
 *.~undo-tree
+
+# folder of packages installed by use-package
+elpa/
+
+# Emacs files I want to ignore
+config.el
