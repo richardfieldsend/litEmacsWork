@@ -62,6 +62,25 @@ splash screen displayed.
 		      :height 85)		; found from experimentation.
 #+end_src
 
+**** Appearance IV: Highlight Current Line.
+
+To help guide the eye (especially when the font is quite small!)
+highlight the line where the cursor is.
+
+#+begin_src emacs-lisp
+  (global-hl-line-mode 1)			; highlight current line.
+#+end_src
+
+**** Appearance V: Line Numbering.
+
+It can be useful to have line numbering as the files get longer. 
+
+#+begin_src emacs-lisp
+  (global-linum-mode t)			; line numbering on.
+#+end_src
+
+So far, this completes the 'built in' settings for look and feel. Time for a commit!
+
 **** Look and Feel 'Installed' Customisation.
 *** Programming Customisation.
 **** C/C++.
