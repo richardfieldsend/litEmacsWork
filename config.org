@@ -54,6 +54,14 @@ splash screen displayed.
   (setq inhibit-startup-message t)	; splash screen disabled.
 #+end_src
 
+**** Appearance III: Select a Nice Font.
+
+#+begin_src emacs-lisp 
+  (set-face-attribute 'default nil
+		      :font "Inconsolata Medium"
+		      :height 85)		; found from experimentation.
+#+end_src
+
 **** Look and Feel 'Installed' Customisation.
 *** Programming Customisation.
 **** C/C++.
