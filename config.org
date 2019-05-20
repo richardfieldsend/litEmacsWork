@@ -114,6 +114,53 @@ managing brackets and the like.  This is the first one.
   :config (add-hook 'org-mode-hook 'electric-pair-mode)
 #+end_src
 
+***** Appearance VIII: Doom Modeline - Pretty Modeline.
+
+To use this package I need to install 'all-the-icons' and
+'doom-modeline' and then select a theme.
+
+#+begin_src emacs-lisp
+  (use-package all-the-icons)		; Install All-The-Icons
+  (use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
+  (use-package doom-themes
+  :ensure t
+  :config (load-theme 'doom-dracula t))
+#+end_src
+
+***** Appearance IX: Text Displayed at Startup.
+
+I have switched off the splash screen, which means that Emacs shows a
+simple bit of text on launch (unless a file has been loaded from the
+command line) about the scratch buffer. We can do better than that.
+
+I regularly run Emacs on three machines:
+
+- iMac Pro - Psychology
+- Avantex desktop - Plant Science
+- Dell Latitude E5500 laptop - Home
+
+Emacs can select code to run on the basis of system name using a
+lookup  on the variable 'system name'.  According to the variable
+description, system-name is defined in 'C Source Code', but this
+variable is obsolete in Emacs after version 25.1. Use (system-name)
+instead...
+
+#+begin_src emacs-lisp
+  ;; ziggy-latitude - my home laptop:
+  (if (string=(system-name) "ziggy-latitude")
+  (setq initial-scratch-message
+  "I use Emacs, which might be thought of as a thermonuclear word processor.\n\nNeal Stephenson - \t In the Beginning... Was the Command Line"))
+  ;; psychol-ford (Psychology)
+  (if (string=(system-name) "psychol-ford")
+  (setq initial-scratch-message
+  "'Space,' it says, 'is big. Really big. You just won't believe how vastly, hugely, mindbogglingly big it is.\nI mean, you may think it's a long way down the road to the chemist, but that's just peanuts to space.'\n\nHitch Hiker's Guide To The Galaxy\n\tDouglas Adams."))
+  ;; plantsci-cowin01
+  (if (string=(system-name) "plantsci-cowin01")
+  (setq initial-scratch-message
+  "The most exciting phrase to hear in science, the one that heralds the most discoveries is\nnot 'Eureka!' (I have found it!) but 'That's funny...'\n\nIsaac Asimov"))
+#+end_src
 
 *** Programming Customisation.
 **** C/C++.
