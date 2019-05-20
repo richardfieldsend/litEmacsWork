@@ -219,9 +219,30 @@ again, we can do better.
   (setq auto-save-file-name-transforms '((".*" "~/.Backups/" t))) ; uniquify saved name
 #+end_src
 
+***** TODO more information on the way the backup works.
 This should now generate backup files in a hidden directory where they
 can be retrieved if required.
 
+**** White Space Trimming.
+Trigger the 'white space trimming function' whenever the file is saved.
+#+begin_src emacs-lisp
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+end_src
+**** Answering yes/no Questions with y/n.
+#+begin_src emacs-lisp
+  (fset 'yes-or-no 'y-or-n-p)
+#+end_src
+**** Word Wrapping.
+***** [TODO] Add appropriate text description for this.
+#+begin_src emacs-lisp
+  (add-hook 'text-mode-hook 'auto-fill-mode)		;word
+  (add-hook 'LaTeX-mode-hook 'auto-fill-mode)		;wrap
+  (add-hook 'latex-mode-hook 'auto-fill-mode)		;in these
+  (add-hook 'org-mode-hook 'auto-fill-mode)		;various
+  (add-hook 'emacs-lisp-mode-hook 'auto-fill-mode)	;text
+  (add-hook 'fundamental-mode-hook 'auto-fill-mode)	;modes.
+  (add-hook 'prog-mode-hook 'auto-fill-mode)		;
+#+end_src
 *** Programming Customisation.
 **** C/C++.
 **** Python.
