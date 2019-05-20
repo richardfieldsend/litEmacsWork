@@ -22,6 +22,18 @@ editor invites the process of fiddling around.
 
 *** Look and Feel Customisation.
 **** Look and Feel 'Built In' Customisation.
+Entries in this section modify the look and feel of Emacs using just
+those configuration options which are available by default with
+Emacs.  Most of these are about increasing the available real-estate
+for my Emacs page and turning off unnecessary splash screens etc.
+
+#+begin_src emacs-lisp
+  (menu-bar-mode 0)			; Turn off the menu bar (file, edit etc)
+  (tool-bar-mode 0)			; Turn off the icons for new, save etc
+  (blink-cursor-mode 0)			; Stop the cursor blinking
+  (scroll-bar-mode 0)			; We don't need no scroll bar.
+  (display-time-mode 1)			; Never have too many clocks.
+#+end_src
 **** Look and Feel 'Installed' Customisation.
 *** Programming Customisation.
 **** C/C++.
