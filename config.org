@@ -27,7 +27,7 @@ those configuration options which are available by default with
 Emacs.  Most of these are about increasing the available real-estate
 for my Emacs page and turning off unnecessary splash screens etc.
 
-**** Appearance I: Reclaim Real-Estate.
+***** Appearance I: Reclaim Real-Estate.
 
 This code block makes the following changes:
 
@@ -45,7 +45,7 @@ This code block makes the following changes:
   (display-time-mode 1)			; Never have too many clocks.
 #+end_src
 
-**** Appearance II: Switch Off the Splash-Screen.
+***** Appearance II: Switch Off the Splash-Screen.
 
 I know that I have just fired up Emacs, so I don't need to have the
 splash screen displayed.
@@ -54,7 +54,7 @@ splash screen displayed.
   (setq inhibit-startup-message t)	; splash screen disabled.
 #+end_src
 
-**** Appearance III: Select a Nice Font.
+***** Appearance III: Select a Nice Font.
 
 #+begin_src emacs-lisp 
   (set-face-attribute 'default nil
@@ -62,7 +62,7 @@ splash screen displayed.
 		      :height 85)		; found from experimentation.
 #+end_src
 
-**** Appearance IV: Highlight Current Line.
+***** Appearance IV: Highlight Current Line.
 
 To help guide the eye (especially when the font is quite small!)
 highlight the line where the cursor is.
@@ -71,7 +71,7 @@ highlight the line where the cursor is.
   (global-hl-line-mode 1)			; highlight current line.
 #+end_src
 
-**** Appearance V: Line Numbering.
+***** Appearance V: Line Numbering.
 
 It can be useful to have line numbering as the files get longer. 
 
@@ -82,6 +82,22 @@ It can be useful to have line numbering as the files get longer.
 So far, this completes the 'built in' settings for look and feel. Time for a commit!
 
 **** Look and Feel 'Installed' Customisation.
+
+***** Appearance VI: Colour Theme.
+
+First point of note: This is the first entry in my config file which
+uses 'use-package' to install it.  There are a lot of colour schemes
+available as packages, but I'm going to use a Cyberpunk theme for the
+time being. It is largely dark, but with a nice colourfull syntax
+highlighting setup.
+
+#+begin_src emacs-lisp
+  (use-package cyberpunk-theme
+  :ensure t)
+#+end_src
+
+
+
 *** Programming Customisation.
 **** C/C++.
 **** Python.
