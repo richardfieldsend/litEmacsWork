@@ -96,6 +96,23 @@ highlighting setup.
   :ensure t)
 #+end_src
 
+***** Appearance VII: Rainbow Delimiters.
+
+There are a couple of useful approaches that Emacs supports for
+managing brackets and the like.  This is the first one.
+
+#+begin_src emacs-lisp
+  (use-package rainbow-delimiters
+  :ensure t
+  :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+  :config (add-hook 'LaTeX-mode-hook 'rainbow-delimiters-mode)
+  :config (add-hook 'text-mode-hook 'rainbow-delimiters-mode)
+  :config (add-hook 'org-mode-hook 'rainbow-delimiters-mode))
+  :config (add-hook 'prog-mode-hook 'electric-pair-mode)
+  :config (add-hook 'LaTeX-mode-hook 'electric-pair-mode)
+  :config (add-hook 'text-mode-hook 'electric-pair-mode)
+  :config (add-hook 'org-mode-hook 'electric-pair-mode)
+#+end_src
 
 
 *** Programming Customisation.
