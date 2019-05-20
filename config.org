@@ -27,6 +27,16 @@ those configuration options which are available by default with
 Emacs.  Most of these are about increasing the available real-estate
 for my Emacs page and turning off unnecessary splash screens etc.
 
+**** Appearance I: Reclaim Real-Estate.
+
+This code block makes the following changes:
+
+- Turn off menu bar (File Edit etc)
+- Turn off tool bar (icons)
+- Turn off blinking cursor
+- Turn off the scroll bar
+- Display the time on the modeline
+
 #+begin_src emacs-lisp
   (menu-bar-mode 0)			; Turn off the menu bar (file, edit etc)
   (tool-bar-mode 0)			; Turn off the icons for new, save etc
@@ -34,6 +44,16 @@ for my Emacs page and turning off unnecessary splash screens etc.
   (scroll-bar-mode 0)			; We don't need no scroll bar.
   (display-time-mode 1)			; Never have too many clocks.
 #+end_src
+
+**** Appearance II: Switch Off the Splash-Screen.
+
+I know that I have just fired up Emacs, so I don't need to have the
+splash screen displayed.
+
+#+begin_src emacs-lisp
+  (setq inhibit-startup-message t)	; splash screen disabled.
+#+end_src
+
 **** Look and Feel 'Installed' Customisation.
 *** Programming Customisation.
 **** C/C++.
