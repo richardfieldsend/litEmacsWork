@@ -203,6 +203,25 @@ text or coding. Things like git integration belong here.
 "~/.emacs.d/elpa/magit-2.90.1/dir/"))
 #+end_src
 
+**** Backup Configuration.
+
+By default Emacs creates a simple backup of files when editing. These
+share the same name but with an appended tilde (~). This is okay, but,
+again, we can do better.
+
+#+begin_src emacs-lisp
+  (setq backup-directory-alist '(("." . "~/.Backups/"))) ; hidden backup folder
+  (setq delete-old-versions t)                              ; delete old versions silently
+  (setq kept-new-versions 6)                                ; no. of new versions to keep
+  (setq kept-old-versions 2)                                ; no. of old versions to keep.
+  (setq version-control t)                                  ; create numbered backups
+  (setq vc-make-backup-files t)                             ; backup even version controlled files.
+  (setq auto-save-file-name-transforms '((".*" "~/.Backups/" t))) ; uniquify saved name
+#+end_src
+
+This should now generate backup files in a hidden directory where they
+can be retrieved if required.
+
 *** Programming Customisation.
 **** C/C++.
 **** Python.
