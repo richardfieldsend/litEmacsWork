@@ -55,7 +55,7 @@ splash screen displayed.
 
 ***** Appearance III: Select a Nice Font.
 
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
   (set-face-attribute 'default nil
 		      :font "Inconsolata Medium"
 		      :height 85)		; found from experimentation.
@@ -72,7 +72,7 @@ highlight the line where the cursor is.
 
 ***** Appearance V: Line Numbering.
 
-It can be useful to have line numbering as the files get longer. 
+It can be useful to have line numbering as the files get longer.
 
 #+begin_src emacs-lisp
   (global-linum-mode t)			; line numbering on.
@@ -160,6 +160,26 @@ instead...
   (setq initial-scratch-message
   "The most exciting phrase to hear in science, the one that heralds the most discoveries is\nnot 'Eureka!' (I have found it!) but 'That's funny...'\n\nIsaac Asimov"))
 #+end_src
+
+***** Appearance X: Minimap Mode.
+The concept of the Minimap is to provide a 10,000 foot overview of
+your text in a small window to the left of the main editing window.
+The font size can be adjusted to make it just readable, or it can be
+left so small that it is just to give you an idea of the 'shape' of
+your document.
+
+In a previous iteration of this file I have had this enabled in Org
+Mode, but I found it a bit jarring, especially as I tend to dip in and
+out of Org files. As this is the case I have modified the installation
+code so that it doesn't include Org modes.
+
+#+begin_src emacs-lisp
+  (use-package minimap			; Install Minimap
+  :ensure t
+  :config (setq minimap-major-modes '(tex-mode prog-mode))
+  :config (minimap-mode 1))
+#+end_src
+This configuration works, but the font size can probably be fiddled with.
 
 *** Universal Functionality.
 Entries here are for functions which are not specific to banging out
