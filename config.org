@@ -268,6 +268,23 @@ Trigger the 'white space trimming function' whenever the file is saved.
 **** Python.
 **** Clojure.
 *** Text Editing.
+**** WriteRoom Mode.
+Linux has a nice distraction free text writing application called
+Focus Writer. It looks pretty, does away with page furniture and even
+has a word count function that you can tie into a "word target of the
+day" function. But it doesn't have all the Emacs goodies that I have
+grown to love!
+
+WriteRoom provides a full screen text editing function within Emacs,
+pushing the Emacs to full screen and then placing your text in the
+middle of the page. It is nice, if simplistic.
+
+#+begin_src emacs-lisp
+  (use-package writeroom-mode		; Install and enable writeroom mode.
+  :ensure t)
+#+end_src
+
+***** [TODO] Look at combining writeroom mode and LaTeX word count
 **** HTML
 **** LaTeX
 **** Spell Checking
