@@ -1,4 +1,5 @@
 * Config.org: A configuration file for Emacs.
+# Time-stamp: "2019-05-22 14:49:38 richard"
 ** [TODO] Introduction.
 I do like to fiddle around with Emacs. But the infinitely extensible
 editor invites the process of fiddling around.
@@ -263,6 +264,47 @@ Trigger the 'white space trimming function' whenever the file is saved.
   (add-hook 'fundamental-mode-hook 'auto-fill-mode)	;modes.
   (add-hook 'prog-mode-hook 'auto-fill-mode)		;
 #+end_src
+**** Time Stamping Files.
+There are many ways of tracking who is responsibe for changes to
+various files on your system. Git includes logging which can be used
+to record who has made changes to the files under version
+control. However, for files that aren't necessarily under version
+control it is nice to have a time stamp which indicates when and by
+whom a file is saved. This is done by using a simple time stamp. This
+requires a line like this:
+
+- Time-stamp: " "
+
+or
+
+- Time-stamp: < >
+
+in the first eight lines of the file. When the file is saved the time
+stamp and username is placed in between the delimiters (NB. A space is
+required).
+
+#+begin_src emacs-lisp
+  (add-hook 'before-save-hook 'time-stamp) ; run function before saving file
+  (setq time-stamp-pattern nil)		 ; no unusual pattern used for the time stamp. See notes
+#+end_src
+
+Looking at this page: https://www.emacswiki.org/emacs/TimeStamp
+
+it is possible to modify the format of the time stamp as required.
+The major changes are:
+
+- where the time stamp has to appear. By default it is in the first 8
+  lines of the file, but by using a negative number in the format
+  configuration the time stamp can be located at the end of the file.
+
+- what time and date information and user info, in what order is
+  used. By default the order is YYYY-MM-DD HH:MM:SS username.
+
+The advice on the Emacs wiki page is to not change the configuration
+unless you really need to as it may cause problems if you are
+collaborating on files which have been edited on other machines and
+the expectation is that the time-stamp will be in a specific location.
+
 *** Programming Customisation.
 **** C/C++.
 **** Python.
