@@ -1,5 +1,5 @@
 * Config.org: A configuration file for Emacs.
-# Time-stamp: "2019-05-22 14:49:38 richard"
+# Time-stamp: "2019-05-22 15:21:09 richard"
 ** [TODO] Introduction.
 I do like to fiddle around with Emacs. But the infinitely extensible
 editor invites the process of fiddling around.
@@ -243,6 +243,37 @@ again, we can do better.
 ***** TODO more information on the way the backup works.
 This should now generate backup files in a hidden directory where they
 can be retrieved if required.
+
+**** History Configuration - Sacha Chua's C3F Configuration.
+As noted in the section on backing up, modern computers have
+relatively large hard drives, the sort of thing that just isn't going
+to get filled up with text files, however hard you type. As this is
+the case it is possible to become a little bit of a hoarder and
+collect everything that you write and edit if you want (I don't want
+to go that far, but keeping the important stuff is good).
+
+In this article:
+
+https://www.wisdomandwonder.com/wp-content/uploads/2014/03/C3F.html
+
+Sacha Chua outlines her approach to 'C3F' (Creation and Conservation
+of Computer Files).
+
+#+begin_src emacs-lisp
+(setq savehist-file "~/.Backups/savehist")
+(savehist-mode 1)
+(setq history-length t)
+(setq history-delete-duplicates t)
+(setq savehist-save-minibuffer-history 1)
+(setq savehist-additional-variables
+      '(kill-ring
+        search-ring
+        regexp-search-ring))
+#+end_src
+
+This configuration should save a history in a file in the same backup
+folder used above. This is a nice place to put it as it is hidden from
+day to day use.
 
 **** White Space Trimming.
 Trigger the 'white space trimming function' whenever the file is saved.
