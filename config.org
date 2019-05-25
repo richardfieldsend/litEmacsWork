@@ -1,5 +1,5 @@
 * Config.org: A configuration file for Emacs.
-# Time-stamp: "2019-05-22 17:22:06 richard"
+# Time-stamp: "2019-05-25 11:08:20 rf343"
 ** [TODO] Introduction.
 I do like to fiddle around with Emacs. But the infinitely extensible
 editor invites the process of fiddling around.
@@ -433,7 +433,31 @@ C-x a i l (for local abbreviation - just in the local mode)
 
 To add multiple words you need to use the C-u no. C-x etc.
 
+**** SavePlace - Save your location for next time.
+This is one of those functions that you don't realise you really want
+until it isn't there. For instance, when I open this file at the
+moment it always opens as a single headline 'Config.org: A
+configuration file for emacs'. I can navigate quickly to where I want
+to be by using the TAB key to expand or shrink the appropriate
+subheadings, but I don't end up where I was last time by default. And
+in a file which wasn't an org file with lots of headings to expand or
+hide, it would be more of a pain. For instance, this file is already
+over 450 lines long, moving through it gets tedious.
 
+The function is simple enough. It saves what line you were on for
+every file you  open and edit. The information is saved in a file
+called '.places' which I am going to place in my .Backup folder.
+
+#+begin_src emacs-lisp
+(save-place-mode 1)
+(setq save-place-file (locate-user-emacs-file "places" "~/.Backups/.places"))
+#+end_src
+It appears that this is now built-in, so trying the information found
+on the wiki:
+
+https://www.emacswiki.org/emacs/SavePlace
+
+Woo-hoo. This works now!
 
 *** Programming Customisation.
 **** C/C++.
