@@ -1,5 +1,5 @@
 * Config.org: A configuration file for Emacs.
-# Time-stamp: "2019-05-25 11:08:20 rf343"
+# Time-stamp: "2019-05-27 15:08:55 rf343"
 ** [TODO] Introduction.
 I do like to fiddle around with Emacs. But the infinitely extensible
 editor invites the process of fiddling around.
@@ -483,5 +483,22 @@ middle of the page. It is nice, if simplistic.
 ***** [TODO] Look at combining writeroom mode and LaTeX word count
 **** HTML
 **** LaTeX
+***** eBib - Bibliography Management in Emacs.
+
+#+begin_src emacs-lisp
+(use-package ebib
+:ensure t
+:config (global-set-key "\C-cb" 'ebib)
+:config (setq ebib-bib-search-dirs '("~/bibliographies/"))
+:config (setq ebib-file-search-dirs '("~/bibliographies/"))
+:config (setq ebib-default-entry-type 'Book)
+:config (setq ebib-preload-bib-files
+'("kindle.bib" "paperbacks.bib" "hardbacks.bib" "audiobooks.bib"))
+:config (setq ebib-keywords-field-keep-sorted t)
+:config (setq ebib-keywords-file "~/bibliographies/keywordslist.txt")
+:config (setq ebib-keywords-use-only-file t)
+:config (setq ebib-reading-list-file "~/bibliographies/ToReadList.org")
+:config (setq ebib-use-timestamp t))
+#+end_src
 **** Spell Checking
 **** Grammar/Lint Checkin
