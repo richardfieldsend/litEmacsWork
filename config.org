@@ -1,5 +1,5 @@
 * Config.org: A configuration file for Emacs.
-# Time-stamp: "2019-05-28 20:33:52 rf343"
+# Time-stamp: "2019-05-29 00:58:19 rf343"
 ** [TODO] Introduction.
 I do like to fiddle around with Emacs. But the infinitely extensible
 editor invites the process of fiddling around.
@@ -93,7 +93,7 @@ highlighting setup.
 
 #+begin_src emacs-lisp
   (use-package cyberpunk-theme
-  :ensure t)
+    :ensure t)
 #+end_src
 
 ***** Appearance VII: Rainbow Delimiters.
@@ -103,15 +103,15 @@ managing brackets and the like.  This is the first one.
 
 #+begin_src emacs-lisp
   (use-package rainbow-delimiters
-  :ensure t
-  :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-  :config (add-hook 'LaTeX-mode-hook 'rainbow-delimiters-mode)
-  :config (add-hook 'text-mode-hook 'rainbow-delimiters-mode)
-  :config (add-hook 'org-mode-hook 'rainbow-delimiters-mode))
-  :config (add-hook 'prog-mode-hook 'electric-pair-mode)
-  :config (add-hook 'LaTeX-mode-hook 'electric-pair-mode)
-  :config (add-hook 'text-mode-hook 'electric-pair-mode)
-  :config (add-hook 'org-mode-hook 'electric-pair-mode)
+    :ensure t
+    :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+    :config (add-hook 'LaTeX-mode-hook 'rainbow-delimiters-mode)
+    :config (add-hook 'text-mode-hook 'rainbow-delimiters-mode)
+    :config (add-hook 'org-mode-hook 'rainbow-delimiters-mode)
+    :config (add-hook 'prog-mode-hook 'electric-pair-mode)
+    :config (add-hook 'LaTeX-mode-hook 'electric-pair-mode)
+    :config (add-hook 'text-mode-hook 'electric-pair-mode)
+    :config (add-hook 'org-mode-hook 'electric-pair-mode))
 #+end_src
 
 ***** Appearance VIII: Doom Modeline - Pretty Modeline.
@@ -122,11 +122,11 @@ To use this package I need to install 'all-the-icons' and
 #+begin_src emacs-lisp
   (use-package all-the-icons)		; Install All-The-Icons
   (use-package doom-modeline
-  :ensure t
-  :hook (after-init . doom-modeline-mode))
+    :ensure t
+    :hook (after-init . doom-modeline-mode))
   (use-package doom-themes
-  :ensure t
-  :config (load-theme 'doom-dracula t))
+    :ensure t
+    :config (load-theme 'doom-dracula t))
 #+end_src
 
 ***** Appearance IX: Text Displayed at Startup.
@@ -150,16 +150,16 @@ instead...
 #+begin_src emacs-lisp
   ;; ziggy-latitude - my home laptop:
   (if (string=(system-name) "ziggy-latitude")
-  (setq initial-scratch-message
-  "I use Emacs, which might be thought of as a thermonuclear word processor.\n\nNeal Stephenson - \t In the Beginning... Was the Command Line"))
+      (setq initial-scratch-message
+	    "I use Emacs, which might be thought of as a thermonuclear word processor.\n\nNeal Stephenson - \t In the Beginning... Was the Command Line"))
   ;; psychol-ford (Psychology)
   (if (string=(system-name) "psychol-ford")
-  (setq initial-scratch-message
-  "'Space,' it says, 'is big. Really big. You just won't believe how vastly, hugely, mindbogglingly big it is.\nI mean, you may think it's a long way down the road to the chemist, but that's just peanuts to space.'\n\nHitch Hiker's Guide To The Galaxy\n\tDouglas Adams."))
+      (setq initial-scratch-message
+	    "'Space,' it says, 'is big. Really big. You just won't believe how vastly, hugely, mindbogglingly big it is.\nI mean, you may think it's a long way down the road to the chemist, but that's just peanuts to space.'\n\nHitch Hiker's Guide To The Galaxy\n\tDouglas Adams."))
   ;; plantsci-cowin01
   (if (string=(system-name) "plantsci-cowin01")
-  (setq initial-scratch-message
-  "The most exciting phrase to hear in science, the one that heralds the most discoveries is\nnot 'Eureka!' (I have found it!) but 'That's funny...'\n\nIsaac Asimov"))
+      (setq initial-scratch-message
+	    "The most exciting phrase to hear in science, the one that heralds the most discoveries is\nnot 'Eureka!' (I have found it!) but 'That's funny...'\n\nIsaac Asimov"))
 #+end_src
 
 ***** Appearance X: Minimap Mode.
@@ -176,9 +176,9 @@ code so that it doesn't include Org modes.
 
 #+begin_src emacs-lisp
   (use-package minimap			; Install Minimap
-  :ensure t
-  :config (setq minimap-major-modes '(tex-mode prog-mode))
-  :config (minimap-mode 1))
+    :ensure t
+    :config (setq minimap-major-modes '(tex-mode prog-mode))
+    :config (minimap-mode 1))
 #+end_src
 This configuration works, but the font size can probably be fiddled with.
 
@@ -200,39 +200,39 @@ text or coding. Things like git integration belong here.
 ***** Dash
 #+begin_src emacs-lisp
   (use-package dash
-  :ensure t)					;
+    :ensure t)					;
 #+end_src
 
 ***** Magit-pop-up
 #+begin_src emacs-lisp
   (use-package magit-popup
-  :ensure t)
+    :ensure t)
 #+end_src
 ***** With Editor
 #+begin_src emacs-lisp
   (use-package with-editor
-  :ensure t)
+    :ensure t)
 #+end_src
 ***** ghub (GitHub integration)
 #+begin_src emacs-lisp
   (use-package ghub
-  :ensure t)
+    :ensure t)
 #+end_src
 
 **** Magit - The Program Itself.
 #+begin_src emacs-lisp
-(use-package magit
-:ensure t
-:config (global-set-key (kbd "C-x g") 'magit-status))
+  (use-package magit
+    :ensure t
+    :config (global-set-key (kbd "C-x g") 'magit-status))
 #+end_src
 
 **** Magit - Documentation.
 
 #+begin_src emacs-lisp
-(with-eval-after-load 'info
-(info-initialize)
-(add-to-list 'Info-directory-list
-"~/.emacs.d/elpa/magit-2.90.1/dir/"))
+  (with-eval-after-load 'info
+    (info-initialize)
+    (add-to-list 'Info-directory-list
+		 "~/.emacs.d/elpa/magit-2.90.1/dir/"))
 #+end_src
 
 **** Backup Configuration.
@@ -271,15 +271,15 @@ Sacha Chua outlines her approach to 'C3F' (Creation and Conservation
 of Computer Files).
 
 #+begin_src emacs-lisp
-(setq savehist-file "~/.Backups/savehist")
-(savehist-mode 1)
-(setq history-length t)
-(setq history-delete-duplicates t)
-(setq savehist-save-minibuffer-history 1)
-(setq savehist-additional-variables
-      '(kill-ring
-        search-ring
-        regexp-search-ring))
+  (setq savehist-file "~/.Backups/savehist")
+  (savehist-mode 1)
+  (setq history-length t)
+  (setq history-delete-duplicates t)
+  (setq savehist-save-minibuffer-history 1)
+  (setq savehist-additional-variables
+	'(kill-ring
+	  search-ring
+	  regexp-search-ring))
 #+end_src
 
 This configuration should save a history in a file in the same backup
@@ -289,7 +289,7 @@ day to day use.
 **** White Space Trimming.
 Trigger the 'white space trimming function' whenever the file is saved.
 #+begin_src emacs-lisp
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+end_src
 **** Answering yes/no Questions with y/n.
 #+begin_src emacs-lisp
@@ -484,8 +484,6 @@ https://stackoverflow.com/questions/15773354/indent-code-in-org-babel-src-blocks
   (setq org-src-tab-acts-natively t)
 #+end_src
 
-
-
 *** Programming Customisation.
 **** C/C++.
 **** Python.
@@ -548,6 +546,33 @@ middle of the page. It is nice, if simplistic.
 ***** [TODO] Look at combining writeroom mode and LaTeX word count
 **** HTML
 **** LaTeX
+***** Introducing LaTeX
+******* [TODO] Write an introduction to LaTeX.
+
+***** AucTeX - LaTeX Editing Plug-in for Emacs.
+AucTeX provides lots of support for writing LaTeX documents in
+Emacs. This includes things like helping manage multi-part documents
+(LaTeX makes long documents easier to manage by breaking them down
+into bite size parts, but allowing interconnectivity etc). I will
+write more about what extras it provides at some point.
+
+#+begin_src emacs-lisp
+(use-package tex
+:ensure auctex
+:config (setq TeX-auto-save t)
+:config (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+:config (add-hook 'latex-mode-hook 'turn-onreftex)
+:config (setq reftex-plug-into-AUCTeX t)
+:config (setq-default TeX-master nil)
+:config (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+:config (add-hook 'latex-mode-hook 'LaTeX-math-mode)
+:config (setq TeX-fold-mode 1)
+:config (setq TeX-parse-self t)
+:config (setq TeX-electric-escape t)
+:config (add-hook 'LaTeX-mode-hook 'outline-minor-mode)
+:config (add-hook 'latex-mode-hook 'outline-minor-mode))
+#+end_src
+
 ***** eBib - Bibliography Management in Emacs.
 
 #+begin_src emacs-lisp
