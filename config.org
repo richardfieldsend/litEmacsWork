@@ -1,5 +1,5 @@
 * Config.org: A configuration file for Emacs.
-  # Time-stamp: "2019-05-28 17:20:47 richard"
+  # Time-stamp: "2019-05-28 17:29:32 richard"
 ** [TODO] Introduction.
 I do like to fiddle around with Emacs. But the infinitely extensible
 editor invites the process of fiddling around.
@@ -182,6 +182,17 @@ code so that it doesn't include Org modes.
 #+end_src
 This configuration works, but the font size can probably be fiddled with.
 
+***** Appearance XI: Fancy Bullets for Org-mode.
+The tree structure of Org-mode files is managed by using headings
+identified by an appropriate number of asterisks. The 'deeper' in the
+tree, the larger the number of stars. This works, but isn't hugely
+pretty. Enter the org-bullets mode.
+
+#+begin_src emacs-lisp
+  (use-package org-bullets
+    :ensure t
+    :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+end_src
 *** Universal Functionality.
 Entries here are for functions which are not specific to banging out
 text or coding. Things like git integration belong here.
