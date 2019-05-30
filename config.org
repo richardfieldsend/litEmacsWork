@@ -300,7 +300,7 @@ Trigger the 'white space trimming function' whenever the file is saved.
 #+end_src
 **** Answering yes/no Questions with y/n.
 #+begin_src emacs-lisp
-  (fset 'yes-or-no 'y-or-n-p)
+  (fset 'yes-or-no-p 'y-or-n-p)
 #+end_src
 **** Word Wrapping.
 ***** [TODO] Add appropriate text description for this.
