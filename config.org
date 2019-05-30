@@ -491,6 +491,46 @@ https://stackoverflow.com/questions/15773354/indent-code-in-org-babel-src-blocks
   (setq org-src-tab-acts-natively t)
 #+end_src
 
+**** Word of the Day.
+#+begin_src emacs-lisp
+    (use-package wotd
+      :ensure t)
+#+end_src
+**** User Information.
+I'm not sure what this does right now, but it has been in a previous
+version of this file, so I'm going to include it now, and investigate
+later.
+
+#+begin_src emacs-lisp
+  (setq user-full-name "Richard Fieldsend")
+  (setq user-mail-addrss "richardfieldsend@gmail.com")
+#+end_src
+**** Emacs Server.
+
+One of the things some users obsess over with Emacs is start-up
+times. One approach to dealing with this is to start Emacs either as a
+daemon:
+
+- emacs --daemon
+
+or as a server (run start server from within the program).
+
+This can be done within the configuration file, but you should only
+start a server if none is already running.
+
+#+begin_src emacs-lisp
+  (load "server")
+  (unless (server-running-p) (server-start))
+#+end_src
+Once a server is running you can start more Emacs windows using the
+scrip 'ec' which I have saved in the ~/bin folder. This launches new
+windows very quickly indeed.
+
+You can close emacsclient windows using C-x 5 0
+
+This approach leaves the server running so that the next Emacs window
+opens quickly.
+
 *** Programming Customisation.
 **** C/C++.
 **** Python.
@@ -531,7 +571,6 @@ head.
 
 To me, boxing is like a ballet, except there's no music, no
 Treasure, and the dancers hit each other.
-
 
 *** Text Editing.
 **** WriteRoom Mode.
