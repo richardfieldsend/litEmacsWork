@@ -590,4 +590,20 @@ write more about what extras it provides at some point.
     :config (setq ebib-use-timestamp t))
 #+end_src
 **** Spell Checking
+***** [TODO] info about this setup, but simple enough:
+
+- use ispell
+- set language to British English
+- activate flyspell (on the fly spellchecking) for the various modes.
+
+#+begin_src emacs-lisp
+  (require 'ispell)
+  (setq ispell-dictionary "british")
+  (add-hook 'text-mode-hook 'flyspell-mode)
+  (add-hook 'prog-mode-hook 'flyspell-mode)
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  (add-hook 'latex-mode-hook 'flyspell-mode)
+  (add-hook 'org-mode-hook 'flyspell-mode)
+#+end_src
+
 **** Grammar/Lint Checking
