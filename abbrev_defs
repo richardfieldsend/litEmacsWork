@@ -38,11 +38,11 @@
     ("bw" "Best wishes" nil 2)
     ("hte" "the" nil 1)
     ("hth" "hope that helps" nil 2)
-    ("l" "Lizzie" nil 2)
-    ("m" "Morag" nil 2)
+    ("li" "Lizzie" nil 2)
+    ("mo" "Morag" nil 2)
     ("pla" "Plant Sciences" nil 2)
     ("psy" "Psychology" nil 2)
-    ("r" "Richard" nil 2)
+    ("ri" "Richard" nil 2)
     ("rf" "Richard Fieldsend" nil 4)
     ("tia" "Thanks in anticipation" nil 1)
    ))
@@ -126,4 +126,3 @@
 (define-abbrev-table 'vc-git-region-history-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '())
-

@@ -195,6 +195,14 @@ pretty. Enter the org-bullets mode.
 *** Universal Functionality.
 Entries here are for functions which are not specific to banging out
 text or coding. Things like git integration belong here.
+**** Set Default Mode to Text.
+The reason for this is to enable all the useful modes that don't
+appear to want to play in fundamental mode.
+
+#+begin_src emacs-lisp
+  (setq-default major-mode 'text-mode)
+#+end_src
+
 **** Magit - Dependencies Before Installing Magit.
 ***** Dash
 #+begin_src emacs-lisp
@@ -297,13 +305,13 @@ Trigger the 'white space trimming function' whenever the file is saved.
 **** Word Wrapping.
 ***** [TODO] Add appropriate text description for this.
 #+begin_src emacs-lisp
-  (add-hook 'text-mode-hook 'auto-fill-mode)		;word
-  (add-hook 'LaTeX-mode-hook 'auto-fill-mode)		;wrap
-  (add-hook 'latex-mode-hook 'auto-fill-mode)		;in these
-  (add-hook 'org-mode-hook 'auto-fill-mode)		;various
-  (add-hook 'emacs-lisp-mode-hook 'auto-fill-mode)	;text
-  (add-hook 'fundamental-mode-hook 'auto-fill-mode)	;modes.
-  (add-hook 'prog-mode-hook 'auto-fill-mode)		;
+  (add-hook 'text-mode-hook 'turn-on-auto-fill)		;word
+  (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)		;wrap
+  (add-hook 'latex-mode-hook 'turn-on-auto-fill)		;in these
+  (add-hook 'org-mode-hook 'turn-on-auto-fill)		;various
+  (add-hook 'emacs-lisp-mode-hook 'turn-on-auto-fill)	;text
+  (add-hook 'fundamental-mode-hook 'turn-on-auto-fill)	;modes.
+  (add-hook 'prog-mode-hook 'turn-on-auto-fill)		;
 #+end_src
 **** Time Stamping Files.
 There are many ways of tracking who is responsibe for changes to
@@ -604,6 +612,7 @@ write more about what extras it provides at some point.
   (add-hook 'LaTeX-mode-hook 'flyspell-mode)
   (add-hook 'latex-mode-hook 'flyspell-mode)
   (add-hook 'org-mode-hook 'flyspell-mode)
+  (add-hook 'fundamental-mode-hook 'flyspell-mode)
 #+end_src
 
 **** Grammar/Lint Checking
