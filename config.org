@@ -534,6 +534,34 @@ opens quickly.
 *** Programming Customisation.
 **** C/C++.
 **** Python.
+Python is one of the most popular languages nowadays. It is easy to
+learn, yet powerful. It isn't the fastest thing available, but given
+how fast computers are nowadays, most people don't end up writing
+programs that take any measurable time, so Python is fast enough!
+
+This page:
+
+https://realpython.com/emacs-the-best-python-editor/
+
+is being used as the source of my configuration, at least initially.
+
+#+begin_src emacs-lisp
+      (use-package elpy
+	:ensure t
+	:config (elpy-enable)
+	:config (setq python-shell-interpreter "python" python-shell-interpreter-args "-i"))
+      (use-package flycheck
+	:ensure t
+	:config (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+	(add-hook 'elpy-mode-hook 'flycheck-mode))
+      (use-package py-autopep8
+	:ensure t
+	:config (require 'py-autopep8)
+	:config (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+      (use-package ein
+	:ensure t)
+#+end_src
+
 **** Clojure.
 Activate Clojure mode ready to code in Clojure. This is intended to
 follow the instructions and information in 'Clojure for The Brave and
