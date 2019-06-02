@@ -546,20 +546,20 @@ https://realpython.com/emacs-the-best-python-editor/
 is being used as the source of my configuration, at least initially.
 
 #+begin_src emacs-lisp
-      (use-package elpy
-	:ensure t
-	:config (elpy-enable)
-	:config (setq python-shell-interpreter "python" python-shell-interpreter-args "-i"))
-      (use-package flycheck
-	:ensure t
-	:config (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-	(add-hook 'elpy-mode-hook 'flycheck-mode))
-      (use-package py-autopep8
-	:ensure t
-	:config (require 'py-autopep8)
-	:config (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
-      (use-package ein
-	:ensure t)
+  (use-package elpy
+    :ensure t
+    :config (elpy-enable)
+    :config (setq python-shell-interpreter "python" python-shell-interpreter-args "-i"))
+  (use-package flycheck
+    :ensure t
+    :config (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+    (add-hook 'elpy-mode-hook 'flycheck-mode))
+  (use-package py-autopep8
+    :ensure t
+    :config (require 'py-autopep8)
+    :config (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+  (use-package ein
+    :ensure t)
 #+end_src
 
 **** Clojure.
@@ -720,4 +720,21 @@ https://www.macs.hw.ac.uk/~rs46/posts/2018-12-29-textlint-flycheck.html
     :modes (text-mode latex-mode org-mode markdown-mode)
     )
   (add-to-list 'flycheck-checkers 'textlint)
+#+end_src
+**** Lorem Ipsum - Adding Test Text.
+When you are testing any sort of text creation it is useful to be able
+to add a lot of text which can be nonsense, but which looks like real
+text.
+
+#+begin_src emacs-lisp
+    (use-package lorem-ipsum
+      :ensure t)
+#+end_src
+**** Big Brother Database (BBDB)
+
+#+begin_src emacs-lisp
+    (use-package bbdb
+      :ensure t
+      :config (bbdb-initialize)
+      :init (setq bbdb-file "~/Dropbox/bbdb"))
 #+end_src
