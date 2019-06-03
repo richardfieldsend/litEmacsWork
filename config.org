@@ -584,6 +584,25 @@ this is how it is for the time being.
 #+begin_src emacs-lisp
 (setq frame-title-format '("Emacs - Buffer: %b : File: %f : Mode: %m"))
 #+end_src
+**** Bookmarks.
+Bookmarks can be a useful way of getting back to a file you need to be
+able to visit again. Emacs has a built-in bookmark mode which supports
+annotations for the bookmarks.
+
+The commands for using bookmarks are:
+
+- 'C-x r m' - set bookmark at the current location
+- 'C-x r b' - jump to a bookmark
+- 'C-x r l' - list available bookmarks.
+
+The code below changes the location of the bookmark file so that it is
+stored in my Dropbox. That way I can relocate files on any machine
+(though I need to check what will happen if I try and follow a
+bookmark to a file which doesn't currently exist).
+
+#+begin_src emacs-lisp
+  (set 'bookmark-default-file "~/Dropbox/.bookmarks")
+#+end_src
 *** Programming Customisation.
 **** C/C++.
 **** Python.
@@ -798,7 +817,7 @@ manager. See the instructions here:
 https://github.com/raxod502/diary-manager
 
 #+begin_src emacs-lisp
-  (use-package diary-manager
-    :ensure t
-:config (set 'diary-manager-location "~/Dropbox/.diary"))
+    (use-package diary-manager
+      :ensure t
+      :config (set 'diary-manager-location "~/Dropbox/.diary"))
 #+end_src
