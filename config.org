@@ -774,3 +774,14 @@ text.
       :config (bbdb-initialize)
       :init (setq bbdb-file "~/Dropbox/bbdb"))
 #+end_src
+**** Diary Manager.
+This is an Emacs add-on which plugs into a Python powered diary
+manager. See the instructions here:
+
+https://github.com/raxod502/diary-manager
+
+#+begin_src emacs-lisp
+  (use-package diary-manager
+    :ensure t
+:config (set 'diary-manager-location "~/Dropbox/.diary"))
+#+end_src
