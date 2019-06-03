@@ -691,6 +691,21 @@ middle of the page. It is nice, if simplistic.
 
 ***** [TODO] Look at combining writeroom mode and LaTeX word count
 **** HTML
+Apparently Emmet Mode can help edit html. This is an experiment in
+that.
+#+begin_src emacs-lisp
+  (use-package emmet-mode
+    :ensure t
+    :config (add-hook 'html-mode-hook 'emmet-mode)
+    :config (add-hook 'css-mode-hook 'emmet-mode))
+#+end_src
+
+(add-to-list 'load-path "~/Emacs/emmet/")
+   (require 'emmet-mode)
+   (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+   (add-hook 'html-mode-hook 'emmet-mode)
+   (add-hook 'css-mode-hook  'emmet-mode
+
 **** LaTeX
 ***** Introducing LaTeX
 ******* [TODO] Write an introduction to LaTeX.
