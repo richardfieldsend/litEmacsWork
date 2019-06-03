@@ -531,6 +531,42 @@ You can close emacsclient windows using C-x 5 0
 This approach leaves the server running so that the next Emacs window
 opens quickly.
 
+**** Helm
+Helm is another of those Emacs plug-ins which many people consider
+almost indispensable. It is quite subtle, but it definitely does speed
+access to certain functions. But I think I need to experiment with it
+more.
+
+This configuration installs helm, then activates it. It when replaces
+'M-x' with 'helm-M-x' which provides the search functionality of Emacs
+functions. This means you can type terms that are part of the function
+you are after and the list will dynamically reflect the search.
+
+For instance, to list the available packages:
+
+M-x pack list
+
+will open a window which lists recent matching commands followed by
+commands that match, but aren't in the command history. I have
+recently used 'package-list-packages', so this was at the top of the
+list and ready for use (just hit return), but the other options could
+be selected by using C-n/C-p.
+
+A similar takeover of the buffer functionality is enabled. Hit C-x b
+and a list of buffers will be displayed. Type letters and a filtering
+search begins. Having reduced the number of available matches you can
+select the one you want using C-n/C-p and then hitting return.
+#+begin_src emacs-lisp
+  (use-package helm
+    :ensure t
+    :config (require 'helm-config)
+    :config (helm-mode 1)
+    :config (global-set-key (kbd "C-c h") 'helm-command-prefix)
+    :config (global-unset-key (kbd "C-x c"))
+    :config (global-set-key (kbd "M-x") #'helm-M-x)
+    :config (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+    :config (global-set-key (kbd "C-x C-f") #'helm-find-files))
+#+end_src
 *** Programming Customisation.
 **** C/C++.
 **** Python.
