@@ -17,3 +17,5 @@ elpa/
 config.el
 transient/
 /eshell
+/.mc-lists.el
+/games/tetris-scores

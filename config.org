@@ -728,6 +728,16 @@ bookmark to a file which doesn't currently exist).
 #+begin_src emacs-lisp
   (set 'bookmark-default-file "~/Dropbox/.bookmarks")
 #+end_src
+**** Multiple Cursors
+Do the same edit on multiple lines.
+
+#+begin_src emacs-lisp
+  (use-package package
+    :ensure t)
+    (use-package multiple-cursors
+    :ensure t
+    :config (global-set-key (kbd "C-c m c") 'mc/edit-lines))
+#+end_src
 *** Programming Customisation.
 **** C/C++.
 **** Python.

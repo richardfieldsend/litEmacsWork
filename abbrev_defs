@@ -72,8 +72,8 @@
     ("bw" "Best wishes" nil 3)
     ("hte" "the" nil 1)
     ("hth" "hope that helps" nil 2)
-    ("li" "Lizzie" nil 2)
-    ("mo" "Morag" nil 2)
+    ("liz" "Lizzie" nil 2)
+    ("mor" "Morag" nil 2)
     ("pla" "Plant Sciences" nil 2)
     ("psy" "Psychology" nil 2)
     ("rf" "Richard Fieldsend" nil 5)
@@ -183,4 +183,3 @@
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '())
 
 (define-abbrev-table 'xref--xref-buffer-mode-abbrev-table '())
-
