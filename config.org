@@ -3,11 +3,81 @@
 I do like to fiddle around with Emacs. But the infinitely extensible
 editor invites the process of fiddling around.
 
-** [TODO] Suggested Structure for config.org.
-*** Set up the MELPA Repository.
+** Configuration File Structure.
 
-**** [TODO] Information about packages, including installing and updating.
+The configuration file for Emacs is long and complicated and it is
+likely to become much longer and more complicated as I add my own
+prose to it, and enhance it as required. As this is the case, I would
+like to provide structure to the file in order to help ease the
+process of managing everything.
 
+The various sections of the file should try and reflect this
+structure.  This process will, in all likelihood be a work in progress
+for some time. I will make this process a feature branch which can be
+merged in with the repository as time goes by.
+
+At the very highest level, the file can be grouped as follows:
+
+- Introduction: What the files are and what they do.
+- Initial Setup: Describe the intended package management approach and
+  set up the repositories to be used throughout the initialisation
+  process.
+- Look and Feel Configuration: Modify the visual configuration of
+  Emacs.
+- Built-in Configuration: Use the various built-in customisations that
+  are available in Emacs.
+- Install and Configure Packages as required:
+  - Customisations that are used everywhere in the editor.
+  - Customisations for text editing in various markup languages
+  - Customisations for coding in various languages.
+
+There are some areas of overlap which could arise, but I will try and
+deal with these in a suitable manner when they arise.
+
+** Initial Set-up and Package Management.
+One of the major improvements in the way that Emacs is configured has
+been the addition of packages which can be installed from within the
+program.  This requires one or more 'repositories' which can be
+interrogated to provide a list of available software.
+
+To obtain a list of packages enter:
+
+M-x package-list-packages
+
+This will pull a list of available packages, depending on the
+repositories that are available.
+
+From my reading of this page on the Emacs Wiki:
+
+https://www.emacswiki.org/emacs/ELPA
+
+I now know:
+
+- ELPA stands for Emacs Lisp Package Archive
+- MELPA is a self updating ELPA which pulls code from source
+  repositories and builds them automatically.
+- Marmalade is an ELPA which users can upload packages to, even if
+  they aren't maintainers
+- It is possible to generate a local version of ELPA containing all
+  your installed packages. This can be handy if there are firewall
+  issues preventing you downloading the packages on a company machine.
+
+The code for configuring the repositories is the first example of a
+piece of literate programming in this file, and as such it deserves a
+brief comment on how it is set up.
+
+The code block starts with a 'begin_src' command, which is followed by
+information on what language is being used in the code block.
+
+The code block contains the required number of lines, and ends with
+the 'end_src' command.  If you are doing active development of a file
+using literate programming paradigms you can evaluate the code block's
+contents as required, usually by hitting C-c C-c.
+
+This code block activates the built-in script code, then defines two
+repository archives (gnu and melpa). Finally the repositories are
+initialised which makes their contents available to the package
+management process.
 #+begin_src emacs-lisp
   (require 'package)
   (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
@@ -15,9 +85,64 @@ editor invites the process of fiddling around.
   (package-initialize)
 #+end_src
 
+** Automated Package Installation using use-package.
+Having configured repositories, there is an option for selecting
+packages from the package list and installing them one by one.  This
+approach works. It is also quite easy to maintain as updating packages
+is simple enough (see below). The configuration for individual
+packages can then be managed using the 'customize-group' option for
+packages as they are added, and the code required to add packages and
+configure them will then be written into init.el.  However, there is
+an alternative approach, which is to use a plug-in 'use-package'. To
+add a package add code to 'pull in' the package. You can then add
+various lines which can, amongst other things, ensure the package is
+installed, or postpone installation until the package is required
+(the deferring of packages can speed the process of startup). This is
+the approach I have taken.
+
+In order to support the use of 'use-package' it needs to be
+installed. This requires a line in init.el, and the code block
+below. After this the use-package option is available.
+
 #+begin_src emacs-lisp
   (require 'use-package)
 #+end_src
+
+As an extra note, as packages are installed (either via the
+package-install command, or by using use-package) they are added to
+the elpa subdirectory of your Emacs initialisation folder. This folder
+is by far and away the biggest component of the initialisation folder
+(as of 4th June 2019 it is 50Mb out of 51Mb).
+
+** Updating Packages.
+
+As packages are installed it becomes desirable to update them.  This
+is especially the case with those packages that are in active
+development, but many of the packages I use are updated at least once
+a week.
+
+The process for upgrading the installed packages is:
+
+- M-x package-list-packages - lists the packages available. This list
+  is very long. It is sorted into blocks, including the available
+  packages, those deliberately installed, those that are dependencies
+  and those that are built-in.
+- Once the list has loaded type U (capital u). A message will appear
+  at the bottom of the screen indicating how many packages are
+  available for upgrading. If you choose to upgrade hit x (for
+  execute). A confirmation prompt which lists the packages to be
+  upgraded will be displayed. Hit y for yes to start the upgrade, or n
+  for no to cancel.
+- Once the upgrade has happened it often happens that a message will
+  be displayed indicating that a number of packages are no longer
+  required. The instructions indicate they can be removed with
+  package-autoremove. After this autoremove process, restarting Emacs
+  will pull in the latest version of all the plugins. This can take
+  some time, so I should probably start to look at how to avoid doing
+  it too often!
+
+It may be possible to trigger these updates from the command line... I
+will investigate.
 
 *** Look and Feel Customisation.
 **** Look and Feel 'Built In' Customisation.
