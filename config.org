@@ -971,3 +971,19 @@ https://github.com/raxod502/diary-manager
       :ensure t
       :config (set 'diary-manager-location "~/Dropbox/.diary"))
 #+end_src
+**** Enable editing Firefox text areas in Emacs.
+I'm really not sure how long I will stick with this
+functionality. Essentially the concept is to fire up an Emacs frame
+whenever you are entering text in a web page so that you get to use
+the full glory of your finely honed Emacs configuration.
+
+In some ways this makes a lot of sense. I am deliberately making an
+effort to use the keyboard more, especially when it comes to moving
+around. *And* I am trying to avoid using the arrow keys, even though
+they are on the keyboard. I should be using Emacs movement key
+combinations as much as possible.
+#+BEGIN_SRC emacs-lisp
+    (use-package edit-server
+      :ensure t
+      :config (edit-server-start))
+#+END_SRC
