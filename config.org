@@ -317,6 +317,32 @@ pretty. Enter the org-bullets mode.
     :ensure t
     :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+end_src
+***** Pomodoro Timer
+One of those 'Get Things Done' things, the Pomodoro technique takes
+its name from a classic kitchen timer shaped like a tomato.  The
+concept is simply that you work solidly for 25 minutes and then break
+for 5 minutes, then repeat.
+
+The pomidor plug-in for Emacs is here:
+
+https://github.com/TatriX/pomidor
+
+The page also links to a longer page on using the pomodoro technique.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package pomidor
+    :ensure t
+    :bind (("<f12>" . pomidor))
+    :config (setq pomidor-sound-tick nil
+		  pomidor-sound-tack nil)
+    :hook (pomidor-mode . (lambda ()
+			    (display-line-numbers-mode -1) ; Emacs 26.1+
+			    (setq left-fringe-width 0 right-fringe-width 0)
+			    (setq left-margin-width 2 right-margin-width 0)
+			    ;; force fringe update
+			    (set-window-buffer nil (current-buffer)))))
+#+END_SRC
+
 *** Universal Functionality.
 Entries here are for functions which are not specific to banging out
 text or coding. Things like git integration belong here.
