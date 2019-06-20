@@ -766,6 +766,11 @@ Do the same edit on multiple lines.
 #+end_src
 *** Programming Customisation.
 **** C/C++.
+#+BEGIN_SRC emacs-lisp
+      (use-package ecb
+	:ensure t
+	:config (require 'ecb))
+#+END_SRC
 **** Python.
 Python is one of the most popular languages nowadays. It is easy to
 learn, yet powerful. It isn't the fastest thing available, but given
