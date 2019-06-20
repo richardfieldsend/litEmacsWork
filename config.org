@@ -767,10 +767,9 @@ Do the same edit on multiple lines.
 *** Programming Customisation.
 **** C/C++.
 #+BEGIN_SRC emacs-lisp
-	(use-package ecb
-	  :ensure t
-	  :config (require 'ecb)
-	  :config (setq ecb-layout-name "left1"))
+      (use-package ecb
+	:ensure t
+	:config (require 'ecb))
 #+END_SRC
 **** Python.
 Python is one of the most popular languages nowadays. It is easy to
