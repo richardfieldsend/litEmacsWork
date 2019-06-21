@@ -1,7 +1,49 @@
 * Config.org: A configuration file for Emacs.
-** [TODO] Introduction.
-I do like to fiddle around with Emacs. But the infinitely extensible
-editor invites the process of fiddling around.
+** Introduction.
+
+When I first began to use Linux in anger a little over 20 years ago on
+of my earliest experiences was with a piece of software called Vi.
+Back then the installation process of Redhat Linux was long and
+largely manual, especially when it came to things like partitioning
+the hard drive.  When you got to the point where you actually started
+installing you were given a very, very long list of the available
+programs.  These were grouped into the type of software they were, so
+text editors were together, graphics programs etc. As I was very much
+in the dark at this stage for some of the options I selected 'install
+everything' because I would then have the freedom to experiment.  It
+is worth remembering that this is a long time before I got a network
+connection at home, so if I installed programs it had to be from the
+stack of CDs that had come in the box.
+
+Anyway, I finished my first installation and began to prod around the
+shiny new operating system.  I had cut my teeth of a Sinclair ZX
+Spectrum, BBC Micros, Dec mainframes and DOS, so the command line
+wasn't completely alien, but it was still a challenging place to be.
+
+I started trying to work out how to configure this strange new beast,
+and had my first contact with Vi. I decided to create a text file and
+I believe I typed something like:
+
+vi filename.txt
+
+As the filename didn't exist I was placed in a screen with the cursor
+at the top, and a column of tilde characters (~) on the left hand
+edge. At this stage I expected, in common with every single other text
+editing program that I had ever met that if I typed something it would
+appear on the screen.  This was not the case. I would type, but
+nothing happened.
+
+And again, a reminder. This was before I had a network connection to
+be able to look this stuff up online.  Of course, the fate of the user
+who starts Vi and can't ever lead is nowadays the stuff of memes
+galore, but then, I was that user.
+
+My solution was the first time I took advantage of the fact that Linux
+was always designed to be a proper multi-user system. I used
+Ctrl-Alt-f2 to open a second terminal, log in and kill the Vi process
+from the second login.  Not really elegant, but very effective...
+
+
 
 ** Configuration File Structure.
 
