@@ -802,16 +802,62 @@ Do the same edit on multiple lines.
 #+begin_src emacs-lisp
   (use-package package
     :ensure t)
-    (use-package multiple-cursors
+  (use-package multiple-cursors
     :ensure t
-    :config (global-set-key (kbd "C-c m c") 'mc/edit-lines))
+    :config (global-set-key (kbd "C-c m c") 'mc/edit-lines)
+    :config (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+    :config (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+    :config (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 #+end_src
+**** Helm Spotify Plus
+If you are deep in the process of using Emacs you might not want to go
+away from Emacs to choose your music tracks. This is where the
+'helm-spotify-plus' plug-in comes in.
+
+The code block loads the plug-in and then maps the keys as follows:
+
+- C-c s s - helm-spotify-plus
+- C-c s f - next track
+- C-c s b - back to the beginning of the track
+- C-c s p - play
+- C-c s g - pause (C-g is a popular Emacs quit combination)
+
+To start playing a track C-c s s will ask for the track to play. Enter
+a search term and a list of tracks will be returned. Select the track
+you want and hit return.
+
+The search provided can be free text, artist, track or market and any
+combination of these.
+
+- chumbawamba - no identifier the search is free text
+- a:chumbawamba - artist search
+- t:timebomb - track search
+- a:bragg t:levi - both artist and track
+- a:bragg m:US - artist and the market
+
+If the list is extensive then select a result and hit tab to get a
+list of possible actions. These include things like listening to the
+album.
+
+I've been experimenting with this functionality while writing this
+prose, and it is rather marvellous.  The only other thing I would want
+is the ability to search for a play list.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package helm-spotify-plus
+    :ensure t
+    :config (global-set-key (kbd "C-c s s") 'helm-spotify-plus)
+    :config (global-set-key (kbd "C-c s f") 'helm-spotify-plus-next)
+    :config (global-set-key (kbd "C-c s b") 'helm-spotify-plus-previous)
+    :config (global-set-key (kbd "C-c s p") 'helm-spotify-plus-play)
+    :config (global-set-key (kbd "C-c s g") 'helm-spotify-plus-pause))
+#+END_SRC
 *** Programming Customisation.
 **** C/C++.
 #+BEGIN_SRC emacs-lisp
-      (use-package ecb
-	:ensure t
-	:config (require 'ecb))
+  (use-package ecb
+    :ensure t
+    :config (require 'ecb))
 #+END_SRC
 **** Python.
 Python is one of the most popular languages nowadays. It is easy to
