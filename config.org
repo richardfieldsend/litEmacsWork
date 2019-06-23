@@ -359,6 +359,39 @@ pretty. Enter the org-bullets mode.
     :ensure t
     :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+end_src
+***** Org-Mode Based Mind Maps.
+A nice little script that can be run on any Emacs Org file, which then
+turns it into a 'Mind Map'. It uses GraphViz externally to generate
+the graphics so this has to be installed as well. On a Linux box this
+is simple as the GraphViz software is available in the appropriate
+repository.
+
+The resultant mind map runs from left to right, whereas bespoke
+mind mapping software would put the starting point in the middle and
+radiate from there.
+
+For proper mind mapping on my Linux machines I can use 'vym' (view
+your mind?). There is a program (Freemind) which is good to, but I'm
+currently having an issue with downloading the Java binary.
+#+BEGIN_SRC emacs-lisp
+;; This is an Emacs package that creates graphviz directed graphs from
+;; the headings of an org file
+(use-package org-mind-map
+  :init
+  (require 'ox-org)
+  :ensure t
+  ;; Uncomment the below if 'ensure-system-packages` is installed
+  ;;:ensure-system-package (gvgen . graphviz)
+  :config
+  ;; (setq org-mind-map-engine "dot")       ; Default. Directed Graph
+  ;; (setq org-mind-map-engine "neato")  ; Undirected Spring Graph
+  (setq org-mind-map-engine "twopi")  ; Radial Layout
+  ;; (setq org-mind-map-engine "fdp")    ; Undirected Spring Force-Directed
+  ;; (setq org-mind-map-engine "sfdp")   ; Multiscale version of fdp for the layout of large graphs
+  ;; (setq org-mind-map-engine "twopi")  ; Radial layouts
+  ;; (setq org-mind-map-engine "circo")  ; Circular Layout
+  )
+#+END_SRC
 ***** Pomodoro Timer
 One of those 'Get Things Done' things, the Pomodoro technique takes
 its name from a classic kitchen timer shaped like a tomato.  The
@@ -797,7 +830,10 @@ bookmark to a file which doesn't currently exist).
   (set 'bookmark-default-file "~/Dropbox/.bookmarks")
 #+end_src
 **** Multiple Cursors
-Do the same edit on multiple lines.
+Do the same edit on multiple lines, or at multiple points in a
+file. It appears to work well in html, but I can't get it working in
+Org-mode as yet (or even in the programming blocks). I need to
+experiment with this, because when it works it is really cool.
 
 #+begin_src emacs-lisp
   (use-package package
