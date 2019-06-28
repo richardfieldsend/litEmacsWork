@@ -9,6 +9,32 @@
 
 (define-abbrev-table 'change-log-mode-abbrev-table '())
 
+(define-abbrev-table 'cider-browse-ns-mode-abbrev-table '())
+
+(define-abbrev-table 'cider-browse-spec-example-mode-abbrev-table '())
+
+(define-abbrev-table 'cider-browse-spec-mode-abbrev-table '())
+
+(define-abbrev-table 'cider-browse-spec-view-mode-abbrev-table '())
+
+(define-abbrev-table 'cider-docview-mode-abbrev-table '())
+
+(define-abbrev-table 'cider-inspector-mode-abbrev-table '())
+
+(define-abbrev-table 'cider-repl-history-mode-abbrev-table '())
+
+(define-abbrev-table 'cider-repl-mode-abbrev-table '())
+
+(define-abbrev-table 'cider-stacktrace-mode-abbrev-table '())
+
+(define-abbrev-table 'cider-test-report-mode-abbrev-table '())
+
+(define-abbrev-table 'clojure-mode-abbrev-table '())
+
+(define-abbrev-table 'clojurec-mode-abbrev-table '())
+
+(define-abbrev-table 'clojurescript-mode-abbrev-table '())
+
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
 (define-abbrev-table 'completion-list-mode-abbrev-table '())
@@ -16,6 +42,14 @@
 (define-abbrev-table 'diff-mode-abbrev-table '())
 
 (define-abbrev-table 'display-time-world-mode-abbrev-table '())
+
+(define-abbrev-table 'ebib-entry-mode-abbrev-table '())
+
+(define-abbrev-table 'ebib-index-mode-abbrev-table '())
+
+(define-abbrev-table 'ebib-log-mode-abbrev-table '())
+
+(define-abbrev-table 'ebib-strings-mode-abbrev-table '())
 
 (define-abbrev-table 'edit-abbrevs-mode-abbrev-table '())
 
@@ -35,21 +69,28 @@
 
 (define-abbrev-table 'global-abbrev-table
   '(
-    ("bw" "Best wishes" nil 2)
+    ("bw" "Best wishes" nil 3)
     ("hte" "the" nil 1)
     ("hth" "hope that helps" nil 2)
-    ("l" "Lizzie" nil 2)
-    ("m" "Morag" nil 2)
+    ("liz" "Lizzie" nil 2)
+    ("mor" "Morag" nil 2)
     ("pla" "Plant Sciences" nil 2)
     ("psy" "Psychology" nil 2)
-    ("r" "Richard" nil 2)
-    ("rf" "Richard Fieldsend" nil 4)
+    ("rf" "Richard Fieldsend" nil 5)
+    ("ri" "Richard" nil 2)
+    ("teh" "the" nil 2)
     ("tia" "Thanks in anticipation" nil 1)
    ))
 
 (define-abbrev-table 'gnus-group-mode-abbrev-table '())
 
+(define-abbrev-table 'grep-mode-abbrev-table '())
+
 (define-abbrev-table 'help-mode-abbrev-table '())
+
+(define-abbrev-table 'html-mode-abbrev-table '())
+
+(define-abbrev-table 'ibuffer-mode-abbrev-table '())
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
@@ -91,6 +132,8 @@
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
 
+(define-abbrev-table 'nrepl-messages-mode-abbrev-table '())
+
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-mode-abbrev-table '())
@@ -105,11 +148,19 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
+(define-abbrev-table 'select-tags-table-mode-abbrev-table '())
+
+(define-abbrev-table 'sesman-browser-mode-abbrev-table '())
+
+(define-abbrev-table 'sgml-mode-abbrev-table '())
+
 (define-abbrev-table 'shell-mode-abbrev-table '())
 
 (define-abbrev-table 'special-mode-abbrev-table '())
 
 (define-abbrev-table 'tabulated-list-mode-abbrev-table '())
+
+(define-abbrev-table 'tags-table-mode-abbrev-table '())
 
 (define-abbrev-table 'text-mode-abbrev-table '())
 
@@ -125,5 +176,10 @@
 
 (define-abbrev-table 'vc-git-region-history-mode-abbrev-table '())
 
+(define-abbrev-table 'vc-hg-log-view-mode-abbrev-table '())
+
+(define-abbrev-table 'vc-mtn-log-view-mode-abbrev-table '())
+
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '())
 
+(define-abbrev-table 'xref--xref-buffer-mode-abbrev-table '())
