@@ -292,7 +292,7 @@ To use this package I need to install 'all-the-icons' and
     :hook (after-init . doom-modeline-mode))
   (use-package doom-themes
     :ensure t
-    :config (load-theme 'doom-dracula t))
+    :config (load-theme 'doom-molokai t))
 #+end_src
 
 ***** Appearance IX: Text Displayed at Startup.
@@ -1142,3 +1142,15 @@ combinations as much as possible.
       :ensure t
       :config (edit-server-start))
 #+END_SRC
+**** Typing of Emacs - A typing tutor
+#+begin_src emacs-lisp
+  (use-package typing
+  :ensure t
+  :init
+  (autoload 'typing-of-emacs "typing nit t")
+    :config
+    (progn
+      (setq toe-starting-length 3)
+      (setq toe-starting-time-per-word 10)
+      (setq toe-max-length 20)))
+#+end_src
