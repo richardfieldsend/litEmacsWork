@@ -258,7 +258,7 @@ time being. It is largely dark, but with a nice colourfull syntax
 highlighting setup.
 
 #+begin_src emacs-lisp
-  (use-package cyberpunk-theme
+  (use-package zenburn-theme
     :ensure t)
 #+end_src
 
