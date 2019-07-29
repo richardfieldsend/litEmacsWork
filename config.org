@@ -931,18 +931,34 @@ The True' eBook.
 
 # installing Clojure mode and Cider.
 #+begin_src emacs-lisp
-  (use-package clojure-mode		; Install clojure-mode
-    :ensure t)
-  (use-package clojure-mode-extra-font-locking ; pretty syntax highlighting for clojure mode
-    :ensure t)
-  (use-package cider			; cider install
-    :ensure t)
-  (use-package projectile
-    :ensure t)
-  (use-package tagedit
-    :ensure t)
-  (use-package paredit
-    :ensure t)
+				  (use-package clojure-mode		; Install clojure-mode
+				    :ensure t
+				    :mode (("\\.clj\\'" . clojure-mode)
+					   ("\\.edn\\'" . clojure-mode))
+				    :init
+				    (add-hook 'clojure-mode-hook #'paredit-mode))
+				  (use-package clojure-mode-extra-font-locking ; pretty syntax highlighting for clojure mode
+				    :ensure t)
+				  (use-package cider			; cider install
+				    :ensure t
+				    :defer t
+				    :init (add-hook 'cider-mode-hook #'clj-refactor-mode)
+				    :diminish subword-mode
+				    :config
+				    (setq nrepl-log-messages t
+					  cider-repl-display-in-current-window t
+					  cider-repl-use-clojure-font-lock t
+					  cider-prompt-save-file-on-load 'always-save
+					  cider-font-lock-dynamically '(macro core function var)
+					  nrepl-hide-special-buffers t
+					  cider-overlays-use-font-lock t)
+				    (cider-repl-toggle-pretty-printing))
+				  (use-package projectile
+				    :ensure t)
+				  (use-package tagedit
+				    :ensure t)
+				  (use-package paredit
+				    :ensure t)
 #+end_src
 
 This code block installs Clojure mode, font-locking (syntax colouring
