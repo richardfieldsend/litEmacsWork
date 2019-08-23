@@ -426,6 +426,11 @@ appear to want to play in fundamental mode.
 #+begin_src emacs-lisp
   (use-package dash)					;
 #+end_src
+***** Diminish
+
+#+begin_src emacs-lisp
+  (use-package diminish)
+#+end_src
 
 ***** Magit-pop-up
 #+begin_src emacs-lisp
@@ -770,6 +775,8 @@ search begins. Having reduced the number of available matches you can
 select the one you want using C-n/C-p and then hitting return.
 #+begin_src emacs-lisp
   (use-package helm
+    :diminish helm-mode
+    :init
     :config (require 'helm-config)
     :config (helm-mode 1)
     :config (global-set-key (kbd "C-c h") 'helm-command-prefix)
@@ -778,6 +785,15 @@ select the one you want using C-n/C-p and then hitting return.
     :config (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
     :config (global-set-key (kbd "C-x C-f") #'helm-find-files))
 #+end_src
+
+Friday 23rd August 2019
+
+Added command in the above 'diminish' as per Sacha Chua's Emacs
+initialisation file.
+
+This doesn't appear to do anything right now, so I will add the
+diminish package.
+
 **** Frame title - Set A Better Title
 Emacs does a lot of stuff to tell you what file you are editing, and
 what mode you are using. This information is usually available on the
