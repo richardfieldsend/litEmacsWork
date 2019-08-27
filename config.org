@@ -44,7 +44,6 @@ Ctrl-Alt-f2 to open a second terminal, log in and kill the Vi process
 from the second login.  Not really elegant, but very effective...
 
 
-
 ** Configuration File Structure.
 
 The configuration file for Emacs is long and complicated and it is
@@ -125,6 +124,7 @@ management process.
   (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
   (package-initialize)
+  (setq use-package-always-ensure t)
 #+end_src
 
 ** Automated Package Installation using use-package.
@@ -258,8 +258,7 @@ time being. It is largely dark, but with a nice colourfull syntax
 highlighting setup.
 
 #+begin_src emacs-lisp
-  (use-package cyberpunk-theme
-    :ensure t)
+  (use-package zenburn-theme)
 #+end_src
 
 ***** Appearance VII: Rainbow Delimiters.
@@ -269,7 +268,6 @@ managing brackets and the like.  This is the first one.
 
 #+begin_src emacs-lisp
   (use-package rainbow-delimiters
-    :ensure t
     :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
     :config (add-hook 'LaTeX-mode-hook 'rainbow-delimiters-mode)
     :config (add-hook 'text-mode-hook 'rainbow-delimiters-mode)
@@ -288,11 +286,9 @@ To use this package I need to install 'all-the-icons' and
 #+begin_src emacs-lisp
   (use-package all-the-icons)		; Install All-The-Icons
   (use-package doom-modeline
-    :ensure t
     :hook (after-init . doom-modeline-mode))
   (use-package doom-themes
-    :ensure t
-    :config (load-theme 'doom-dracula t))
+    :config (load-theme 'doom-molokai t))
 #+end_src
 
 ***** Appearance IX: Text Displayed at Startup.
@@ -342,7 +338,6 @@ code so that it doesn't include Org modes.
 
 #+begin_src emacs-lisp
   (use-package minimap			; Install Minimap
-    :ensure t
     :config (setq minimap-major-modes '(tex-mode prog-mode))
     :config (minimap-mode 1))
 #+end_src
@@ -356,7 +351,6 @@ pretty. Enter the org-bullets mode.
 
 #+begin_src emacs-lisp
   (use-package org-bullets
-    :ensure t
     :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+end_src
 ***** Org-Mode Based Mind Maps.
@@ -379,7 +373,6 @@ currently having an issue with downloading the Java binary.
 (use-package org-mind-map
   :init
   (require 'ox-org)
-  :ensure t
   ;; Uncomment the below if 'ensure-system-packages` is installed
   ;;:ensure-system-package (gvgen . graphviz)
   :config
@@ -406,7 +399,6 @@ The page also links to a longer page on using the pomodoro technique.
 
 #+BEGIN_SRC emacs-lisp
   (use-package pomidor
-    :ensure t
     :bind (("<f12>" . pomidor))
     :config (setq pomidor-sound-tick nil
 		  pomidor-sound-tack nil)
@@ -432,30 +424,30 @@ appear to want to play in fundamental mode.
 **** Magit - Dependencies Before Installing Magit.
 ***** Dash
 #+begin_src emacs-lisp
-  (use-package dash
-    :ensure t)					;
+  (use-package dash)					;
+#+end_src
+***** Diminish
+
+#+begin_src emacs-lisp
+  (use-package diminish)
 #+end_src
 
 ***** Magit-pop-up
 #+begin_src emacs-lisp
-  (use-package magit-popup
-    :ensure t)
+  (use-package magit-popup)
 #+end_src
 ***** With Editor
 #+begin_src emacs-lisp
-  (use-package with-editor
-    :ensure t)
+  (use-package with-editor)
 #+end_src
 ***** ghub (GitHub integration)
 #+begin_src emacs-lisp
-  (use-package ghub
-    :ensure t)
+  (use-package ghub)
 #+end_src
 
 **** Magit - The Program Itself.
 #+begin_src emacs-lisp
   (use-package magit
-    :ensure t
     :config (global-set-key (kbd "C-x g") 'magit-status))
 #+end_src
 
@@ -719,8 +711,7 @@ https://stackoverflow.com/questions/15773354/indent-code-in-org-babel-src-blocks
 
 **** Word of the Day.
 #+begin_src emacs-lisp
-    (use-package wotd
-      :ensure t)
+    (use-package wotd)
 #+end_src
 **** User Information.
 I'm not sure what this does right now, but it has been in a previous
@@ -784,7 +775,8 @@ search begins. Having reduced the number of available matches you can
 select the one you want using C-n/C-p and then hitting return.
 #+begin_src emacs-lisp
   (use-package helm
-    :ensure t
+    :diminish helm-mode
+    :init
     :config (require 'helm-config)
     :config (helm-mode 1)
     :config (global-set-key (kbd "C-c h") 'helm-command-prefix)
@@ -793,6 +785,15 @@ select the one you want using C-n/C-p and then hitting return.
     :config (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
     :config (global-set-key (kbd "C-x C-f") #'helm-find-files))
 #+end_src
+
+Friday 23rd August 2019
+
+Added command in the above 'diminish' as per Sacha Chua's Emacs
+initialisation file.
+
+This doesn't appear to do anything right now, so I will add the
+diminish package.
+
 **** Frame title - Set A Better Title
 Emacs does a lot of stuff to tell you what file you are editing, and
 what mode you are using. This information is usually available on the
@@ -839,7 +840,6 @@ experiment with this, because when it works it is really cool.
   (use-package package
     :ensure t)
   (use-package multiple-cursors
-    :ensure t
     :config (global-set-key (kbd "C-c m c") 'mc/edit-lines)
     :config (global-set-key (kbd "C->") 'mc/mark-next-like-this)
     :config (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
@@ -881,7 +881,6 @@ is the ability to search for a play list.
 
 #+BEGIN_SRC emacs-lisp
   (use-package helm-spotify-plus
-    :ensure t
     :config (global-set-key (kbd "C-c s s") 'helm-spotify-plus)
     :config (global-set-key (kbd "C-c s f") 'helm-spotify-plus-next)
     :config (global-set-key (kbd "C-c s b") 'helm-spotify-plus-previous)
@@ -892,7 +891,6 @@ is the ability to search for a play list.
 **** C/C++.
 #+BEGIN_SRC emacs-lisp
   (use-package ecb
-    :ensure t
     :config (require 'ecb))
 #+END_SRC
 **** Python.
@@ -909,19 +907,15 @@ is being used as the source of my configuration, at least initially.
 
 #+begin_src emacs-lisp
   (use-package elpy
-    :ensure t
     :config (elpy-enable)
     :config (setq python-shell-interpreter "python" python-shell-interpreter-args "-i"))
   (use-package flycheck
-    :ensure t
     :config (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
     (add-hook 'elpy-mode-hook 'flycheck-mode))
   (use-package py-autopep8
-    :ensure t
     :config (require 'py-autopep8)
     :config (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
-  (use-package ein
-    :ensure t)
+  (use-package ein)
 #+end_src
 
 **** Clojure.
@@ -931,18 +925,28 @@ The True' eBook.
 
 # installing Clojure mode and Cider.
 #+begin_src emacs-lisp
-  (use-package clojure-mode		; Install clojure-mode
-    :ensure t)
-  (use-package clojure-mode-extra-font-locking ; pretty syntax highlighting for clojure mode
-    :ensure t)
-  (use-package cider			; cider install
-    :ensure t)
-  (use-package projectile
-    :ensure t)
-  (use-package tagedit
-    :ensure t)
-  (use-package paredit
-    :ensure t)
+				  (use-package clojure-mode		; Install clojure-mode
+				    :mode (("\\.clj\\'" . clojure-mode)
+					   ("\\.edn\\'" . clojure-mode))
+				    :init
+				    (add-hook 'clojure-mode-hook #'paredit-mode))
+				  (use-package clojure-mode-extra-font-locking) ; pretty printing
+				  (use-package cider			; cider install
+				    :defer t
+				    :init (add-hook 'cider-mode-hook #'clj-refactor-mode)
+				    :diminish subword-mode
+				    :config
+				    (setq nrepl-log-messages t
+					  cider-repl-display-in-current-window t
+					  cider-repl-use-clojure-font-lock t
+					  cider-prompt-save-file-on-load 'always-save
+					  cider-font-lock-dynamically '(macro core function var)
+					  nrepl-hide-special-buffers t
+					  cider-overlays-use-font-lock t)
+				    (cider-repl-toggle-pretty-printing))
+				  (use-package projectile)
+				  (use-package tagedit)
+				  (use-package paredit)
 #+end_src
 
 This code block installs Clojure mode, font-locking (syntax colouring
@@ -975,8 +979,7 @@ pushing the Emacs to full screen and then placing your text in the
 middle of the page. It is nice, if simplistic.
 
 #+begin_src emacs-lisp
-  (use-package writeroom-mode		; Install and enable writeroom mode.
-    :ensure t)
+  (use-package writeroom-mode)		; Install and enable writeroom mode.
 #+end_src
 
 ***** [TODO] Look at combining writeroom mode and LaTeX word count
@@ -985,7 +988,6 @@ Apparently Emmet Mode can help edit html. This is an experiment in
 that.
 #+begin_src emacs-lisp
   (use-package emmet-mode
-    :ensure t
     :config (add-hook 'html-mode-hook 'emmet-mode)
     :config (add-hook 'css-mode-hook 'emmet-mode))
 #+end_src
@@ -1028,7 +1030,6 @@ write more about what extras it provides at some point.
 
 #+begin_src emacs-lisp
   (use-package ebib
-    :ensure t
     :config (global-set-key "\C-cb" 'ebib)
     :config (setq ebib-bib-search-dirs '("~/bibliographies/"))
     :config (setq ebib-file-search-dirs '("~/bibliographies/"))
@@ -1104,14 +1105,12 @@ to add a lot of text which can be nonsense, but which looks like real
 text.
 
 #+begin_src emacs-lisp
-    (use-package lorem-ipsum
-      :ensure t)
+    (use-package lorem-ipsum)
 #+end_src
 **** Big Brother Database (BBDB)
 
 #+begin_src emacs-lisp
     (use-package bbdb
-      :ensure t
       :config (bbdb-initialize)
       :init (setq bbdb-file "~/Dropbox/bbdb"))
 #+end_src
@@ -1123,7 +1122,6 @@ https://github.com/raxod502/diary-manager
 
 #+begin_src emacs-lisp
     (use-package diary-manager
-      :ensure t
       :config (set 'diary-manager-location "~/Dropbox/.diary"))
 #+end_src
 **** Enable editing Firefox text areas in Emacs.
@@ -1139,6 +1137,16 @@ they are on the keyboard. I should be using Emacs movement key
 combinations as much as possible.
 #+BEGIN_SRC emacs-lisp
     (use-package edit-server
-      :ensure t
       :config (edit-server-start))
 #+END_SRC
+**** Typing of Emacs - A typing tutor
+#+begin_src emacs-lisp
+  (use-package typing
+  :init
+  (autoload 'typing-of-emacs "typing nit t")
+    :config
+    (progn
+      (setq toe-starting-length 3)
+      (setq toe-starting-time-per-word 10)
+      (setq toe-max-length 20)))
+#+end_src
