@@ -20,3 +20,4 @@ transient/
 /.mc-lists.el
 /games/tetris-scores
 tramp
+/.achievements
