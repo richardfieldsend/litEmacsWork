@@ -16,6 +16,7 @@ elpa/
 # Emacs files I want to ignore
 config.el
 transient/
+/places
 /eshell
 /.mc-lists.el
 /games/tetris-scores
