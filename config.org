@@ -892,6 +892,15 @@ is the ability to search for a play list.
   (use-package achievements
     :config (require 'achievements))
 #+END_SRC
+**** Alarm Clock
+#+begin_src emacs-lisp
+  (use-package alarm-clock)
+#+end_src
+**** Icons Display for Dired - all-the-icons-dired
+#+begin_src emacs-lisp
+    (use-package all-the-icons-dired
+      :config (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+#+end_src
 *** Programming Customisation.
 **** C/C++.
 #+BEGIN_SRC emacs-lisp
