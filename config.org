@@ -1150,3 +1150,15 @@ combinations as much as possible.
       (setq toe-starting-time-per-word 10)
       (setq toe-max-length 20)))
 #+end_src
+
+
+
+**** Lisp/Slime
+Reading 'Land of Lisp' book to learn me some Lisp programming (Clojure
+is a dialect of Lisp, so the above is related).
+
+#+begin_src emacs-lisp
+    (use-package slime
+      :mode (("\\.lisp'" . slime-mode))
+      :config (setq inferior-lisp-program "/usr/bin/clisp"))
+#+end_src
