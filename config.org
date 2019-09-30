@@ -43,7 +43,6 @@ was always designed to be a proper multi-user system. I used
 Ctrl-Alt-f2 to open a second terminal, log in and kill the Vi process
 from the second login.  Not really elegant, but very effective...
 
-
 ** Configuration File Structure.
 
 The configuration file for Emacs is long and complicated and it is
@@ -887,6 +886,21 @@ is the ability to search for a play list.
     :config (global-set-key (kbd "C-c s p") 'helm-spotify-plus-play)
     :config (global-set-key (kbd "C-c s g") 'helm-spotify-plus-pause))
 #+END_SRC
+**** Achievements
+
+#+BEGIN_SRC emacs-lisp
+  (use-package achievements
+    :config (require 'achievements))
+#+END_SRC
+**** Alarm Clock
+#+begin_src emacs-lisp
+  (use-package alarm-clock)
+#+end_src
+**** Icons Display for Dired - all-the-icons-dired
+#+begin_src emacs-lisp
+    (use-package all-the-icons-dired
+      :config (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+#+end_src
 *** Programming Customisation.
 **** C/C++.
 #+BEGIN_SRC emacs-lisp
@@ -1035,7 +1049,7 @@ write more about what extras it provides at some point.
     :config (setq ebib-file-search-dirs '("~/bibliographies/"))
     :config (setq ebib-default-entry-type 'Book)
     :config (setq ebib-preload-bib-files
-		  '("kindle.bib" "paperbacks.bib" "hardbacks.bib" "audiobooks.bib"))
+		  '("humble.bib" "amazon.bib" "paperbacks.bib" "hardbacks.bib" "audiobooks.bib"))
     :config (setq ebib-keywords-field-keep-sorted t)
     :config (setq ebib-keywords-file "~/bibliographies/keywordslist.txt")
     :config (setq ebib-keywords-use-only-file t)
