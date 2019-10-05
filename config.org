@@ -919,10 +919,10 @@ enough).
 #+end_src
 *** Programming Customisation.
 **** C/C++.
-#+BEGIN_SRC emacs-lisp
++BEGIN_SRC emacs-lisp
   (use-package ecb
     :config (require 'ecb))
-#+END_SRC
++END_SRC
 **** Python.
 Python is one of the most popular languages nowadays. It is easy to
 learn, yet powerful. It isn't the fastest thing available, but given
@@ -940,6 +940,7 @@ is being used as the source of my configuration, at least initially.
     :config (elpy-enable)
     :config (setq python-shell-interpreter "python" python-shell-interpreter-args "-i"))
   (use-package flycheck
+    :config (progn global-flycheck-mode)
     :config (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
     (add-hook 'elpy-mode-hook 'flycheck-mode))
   (use-package py-autopep8
