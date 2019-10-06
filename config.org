@@ -794,7 +794,27 @@ initialisation file.
 This doesn't appear to do anything right now, so I will add the
 diminish package.
 
+**** Palimpsest
+Taking its name from documents where the original content has been
+scraped off so that the media can be reused (usually vellum or
+papyrus), the Palimpsest plugin provides a way of moving selected text
+either to the beginning or end of the file or to an external 'trash'
+file. This text is then available to be reused if required.
 
+The mode is activated for many of the modes I use, and the mode
+includes the key combinations:
+
+C-c C-r - Move selected text to the end of the file
+C-c C-q - Move selected text to the trash file.
+#+begin_src emacs-lisp
+  (use-package palimpsest
+    :config (add-hook 'text-mode-hook 'palimpsest-mode)
+    :config (add-hook 'prog-mode-hook 'palimpsest-mode)
+    :config (add-hook 'LaTeX-mode-hook 'palimpsest-mode)
+    :config (add-hook 'latex-mode-hook 'palimpsest-mode)
+    :config (add-hook 'org-mode-hook 'palimpsest-mode)
+    :config (add-hook 'fundamental-mode-hook 'palimpsest-mode))
+#+end_src
 **** Frame title - Set A Better Title
 Emacs does a lot of stuff to tell you what file you are editing, and
 what mode you are using. This information is usually available on the
@@ -838,8 +858,7 @@ Org-mode as yet (or even in the programming blocks). I need to
 experiment with this, because when it works it is really cool.
 
 #+begin_src emacs-lisp
-  (use-package package
-    :ensure t)
+  (use-package package)
   (use-package multiple-cursors
     :config (global-set-key (kbd "C-c m c") 'mc/edit-lines)
     :config (global-set-key (kbd "C->") 'mc/mark-next-like-this)
