@@ -409,6 +409,10 @@ The page also links to a longer page on using the pomodoro technique.
 			    (set-window-buffer nil (current-buffer)))))
 #+END_SRC
 
+***** Fireplace
+#+begin_src emacs-lisp
+(use-package fireplace)
+#+end_src
 *** Universal Functionality.
 Entries here are for functions which are not specific to banging out
 text or coding. Things like git integration belong here.
@@ -1211,4 +1215,8 @@ is a dialect of Lisp, so the above is related).
     (use-package slime
       :mode (("\\.lisp'" . slime-mode))
       :config (setq inferior-lisp-program "/usr/bin/clisp"))
+#+end_src
+**** Pomodoro Technique Timer for Emacs
+#+begin_src emacs-lisp
+  (use-package tomatinho)
 #+end_src
