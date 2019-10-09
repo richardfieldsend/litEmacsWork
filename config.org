@@ -51,7 +51,7 @@ management process.
   (setq use-package-always-ensure t)
 #+end_src
 
-** Automated Package Installation using use-package.
+** Installing Code via use-package
 Having configured repositories, there is an option for selecting
 packages from the package list and installing them one by one.  This
 approach works. It is also quite easy to maintain as updating packages
@@ -80,8 +80,7 @@ the elpa subdirectory of your Emacs initialisation folder. This folder
 is by far and away the biggest component of the initialisation folder
 (as of 4th June 2019 it is 50Mb out of 51Mb).
 
-** Updating Packages.
-
+** How to Update Packages Once Installed
 As packages are installed it becomes desirable to update them.  This
 is especially the case with those packages that are in active
 development, but many of the packages I use are updated at least once
@@ -109,16 +108,22 @@ The process for upgrading the installed packages is:
 
 It may be possible to trigger these updates from the command line... I
 will investigate.
-
+** Installing Packages
+The rest of the file actually installs the plugins that I want to use
+within Emacs.  I have tried to arrange these in some sort of hierarchy
+that makes sense of the files. For instance keeping settings that
+manage look and feel together, Programming etc.
 *** Look and Feel Customisation.
+If I wanted to use a program that had only a limited scope for
+customisation I would stick with a Windows or Mac program, but this is
+Open Source, and the world is your lobster.  The 'look and feel'
+customisation is initially split into items that can be changed
+without recourse to external packages and those that require external
+code to be installed.
 **** Look and Feel 'Built In' Customisation.
-Entries in this section modify the look and feel of Emacs using just
-those configuration options which are available by default with
-Emacs.  Most of these are about increasing the available real-estate
-for my Emacs page and turning off unnecessary splash screens etc.
-
-***** Appearance I: Reclaim Real-Estate.
-
+These options use 'built-in' Emacs customisations. Most of them
+derived from various pages about creating a pared down interface.
+***** Create a Simple Interface.
 This code block makes the following changes:
 
 - Turn off menu bar (File Edit etc)
@@ -126,7 +131,6 @@ This code block makes the following changes:
 - Turn off blinking cursor
 - Turn off the scroll bar
 - Display the time on the modeline
-
 #+begin_src emacs-lisp
   (menu-bar-mode 0)			; Turn off the menu bar (file, edit etc)
   (tool-bar-mode 0)			; Turn off the icons for new, save etc
@@ -135,17 +139,17 @@ This code block makes the following changes:
   (display-time-mode 1)			; Never have too many clocks.
 #+end_src
 
-***** Appearance II: Switch Off the Splash-Screen.
-
+***** Don't Display the Splash-Screen On Start-Up.
 I know that I have just fired up Emacs, so I don't need to have the
 splash screen displayed.
-
 #+begin_src emacs-lisp
   (setq inhibit-startup-message t)	; splash screen disabled.
 #+end_src
 
-***** Appearance III: Select a Nice Font.
-
+***** Choose a Nice Font
+When you are banging out the text it should at least be attractive
+text. There are lots of options recommended, which I will try one
+day.
 #+begin_src emacs-lisp
   (set-face-attribute 'default nil
 		      :font "Inconsolata Medium"
