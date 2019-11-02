@@ -43,11 +43,30 @@ This code block activates the built-in script code, then defines two
 repository archives (gnu and melpa). Finally the repositories are
 initialised which makes their contents available to the package
 management process.
+
+Update (November 2019) - A post on Reddit talked about having
+use-package install automatically rather than needing to install it
+manually.
+
+This works perfectly though initially the included entry for the
+Marmalade repository caused a problem as the certificate is out of
+date. This is why the repository is commented out here.
+
+The Reddit post that this is taken from is here:
+
+https://old.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
 #+begin_src emacs-lisp
+  (eval-and-compile)
   (require 'package)
-  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (setq package-archives '(("elpa" . "https://elpa.gnu.org/packages/")
+;;			   ("marmalade" . "https://marmalade-repo.org/packages/")
+			   ("melpa" . "https://melpa.org/packages/")
+			   ("gnu" . "https://elpa.gnu.org/packages/")))
   (package-initialize)
+  (package-refresh-contents)
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+  (require 'use-package)
   (setq use-package-always-ensure t)
 #+end_src
 
@@ -341,6 +360,15 @@ The page also links to a longer page on using the pomodoro technique.
 ***** Fireplace
 #+begin_src emacs-lisp
 (use-package fireplace)
+#+end_src
+***** Show Git info in Dired.
+#+begin_src emacs-lisp
+(use-package dired-git-info)
+#+end_src
+***** Transparency
+#+begin_src emacs-lisp
+(set-frame-parameter (selected-frame) 'alpha '(85 50))
+(add-to-list 'default-frame-alist '(alpha 85 50))
 #+end_src
 *** Universal Functionality.
 Entries here are for functions which are not specific to banging out
