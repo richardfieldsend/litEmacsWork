@@ -1,4 +1,26 @@
 * Config.org: A configuration file for Emacs.
+
+** Work In Progress.
+
+Okay, so I'm new to Lisp programming, despite using Emacs as my main
+text editor for a very long time, and I'm even newer to this process
+of literate programming where you embed your code into suitable text
+which can be used to describe what the program does, or can be used to
+generate documentation or whatever.
+
+And my big project in this area is using it to create my Emacs
+initialisation file, which is what you are looking at.
+
+Currently I'm looking to do the following:
+
+Improve the quality of the prose in the file
+Sort the code in a better way
+Look at generating appropriate documentation from the same file,
+either in org-mode markup or possibly in LaTeX.
+
+Work on this is going to happen in a 'prose' branch.
+
+
 ** Initial Set-up and Package Management.
 One of the major improvements in the way that Emacs is configured has
 been the addition of packages which can be installed from within the
