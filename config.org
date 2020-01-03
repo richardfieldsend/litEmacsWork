@@ -1199,3 +1199,8 @@ is a dialect of Lisp, so the above is related).
 #+begin_src emacs-lisp
   (use-package tomatinho)
 #+end_src
+**** Focus - dim text not immediately being edited.
+
+#+begin_src emacs-lisp
+(use-package focus)
+#+end_src
