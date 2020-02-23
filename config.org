@@ -1,4 +1,11 @@
-* Config.org: A configuration file for Emacs.
+* Config.org: Configuring Emacs using Org-Mode and Babel.
+** Introduction.
+   When I want to write text on a Linux system my preferred editor is
+undoubtedly Emacs, and every user of Emacs spends an inordinate length
+of time tweaking their setup.
+
+In the past I used techniques like downloading and unpacking the code
+for various plugins into a defined folder.
 
 ** Work In Progress.
 
@@ -19,7 +26,6 @@ Look at generating appropriate documentation from the same file,
 either in org-mode markup or possibly in LaTeX.
 
 Work on this is going to happen in a 'prose' branch.
-
 
 ** Initial Set-up and Package Management.
 One of the major improvements in the way that Emacs is configured has
@@ -391,6 +397,21 @@ The page also links to a longer page on using the pomodoro technique.
 #+begin_src emacs-lisp
 (set-frame-parameter (selected-frame) 'alpha '(85 50))
 (add-to-list 'default-frame-alist '(alpha 85 50))
+#+end_src
+***** Dashboard  - nice start up screen
+Not sure whether I'll keep this, we'll see. Info about this
+functionality can be found here:
+https://github.com/emacs-dashboard/emacs-dashboard
+#+begin_src emacs-lisp
+		(use-package dashboard
+		  :ensure t
+		  :config
+		  (dashboard-setup-startup-hook)
+		  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+		  (setq dashboard-startup-banner 'logo)
+		  (setq dashboard-set-heading-icons t)
+		  (setq dashboard-set-file-icons t)
+		  (setq dashboard-set-navigator t))
 #+end_src
 *** Universal Functionality.
 Entries here are for functions which are not specific to banging out
