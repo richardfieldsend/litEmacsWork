@@ -222,6 +222,14 @@ It can be useful to have line numbering as the files get longer.
 
 So far, this completes the 'built in' settings for look and feel. Time for a commit!
 
+***** Quickly find recently used files.
+#+begin_src emacs-lisp
+    (use-package recentf
+      :config
+       (setq recentf-save-file "~/.Backups/recentf")
+       recentf-max-saved-items 500
+       (recentf-mode +1))
+#+end_src
 **** Look and Feel 'Installed' Customisation.
 
 ***** Appearance VI: Colour Theme.
@@ -403,15 +411,15 @@ Not sure whether I'll keep this, we'll see. Info about this
 functionality can be found here:
 https://github.com/emacs-dashboard/emacs-dashboard
 #+begin_src emacs-lisp
-		(use-package dashboard
-		  :ensure t
-		  :config
-		  (dashboard-setup-startup-hook)
-		  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
-		  (setq dashboard-startup-banner 'logo)
-		  (setq dashboard-set-heading-icons t)
-		  (setq dashboard-set-file-icons t)
-		  (setq dashboard-set-navigator t))
+  (use-package dashboard
+    :ensure t
+    :config
+    (dashboard-setup-startup-hook)
+    (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+    (setq dashboard-startup-banner 'logo)
+    (setq dashboard-set-heading-icons t)
+    (setq dashboard-set-file-icons t)
+    (setq dashboard-set-navigator t))
 #+end_src
 *** Universal Functionality.
 Entries here are for functions which are not specific to banging out
