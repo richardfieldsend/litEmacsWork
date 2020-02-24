@@ -731,7 +731,7 @@ later.
 
 #+begin_src emacs-lisp
   (setq user-full-name "Richard Fieldsend")
-  (setq user-mail-addrss "richardfieldsend@gmail.com")
+  (setq user-mail-address "richardfieldsend@gmail.com")
 #+end_src
 **** Emacs Server.
 
@@ -1028,6 +1028,12 @@ head.
 To me, boxing is like a ballet, except there's no music, no
 Treasure, and the dancers hit each other.
 
+**** Size indication mode - how big is the file?
+Display how large the file you are editing is in the information bar
+at the bottom of the editor window.
+#+begin_src emacs-lisp
+(size-indication-mode t)
+#+end_src
 *** Text Editing.
 **** WriteRoom Mode.
 Linux has a nice distraction free text writing application called
